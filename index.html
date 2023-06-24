@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AMŐBA - Müller László tesztfeladat</title>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link href="style/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <!-- Login box -->
+    <section id="playerNameInput" class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">AMŐBA - Müller László tesztfeladat</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6 col-lg-4">
+                    <div class="login-wrap p-0">
+                        <h3 class="mb-4 text-center">Játékososk megadása</h3>
+                        <form action="#" class="signin-form">
+                            <div class="form-group">
+                                <input type="text" id="namePlayerOne" name="namePlayerOne" class="form-control"
+                                    placeholder="Első játékos neve" />
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="namePlayerTwo" name="namePlayerTwo" class="form-control"
+                                    placeholder="Kettes játékos neve" />
+                            </div>
+                            <div class="form-group">
+                                <select id="sizeSelect" class="form-select form-select-lg form-control"
+                                    aria-label=".form-select-lg example">
+                                    <option selected value="0">Válaszd ki a tábla méretét!</option>
+                                    <option value="8">8 X 8</option>
+                                    <option value="10">10 X 10</option>
+                                    <option value="12">12 X 12</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="playerSubmitButton"
+                                    class="form-control btn btn-primary submit px-3">Kezdődhet a
+                                    játék</button>
+                            </div>
+                            <div id="errorMsgUsers" class="invalid-feedback m-2 ml-4">
+                                Add meg mindkét játékos nevét!
+                            </div>
+                            <div id="errorMsgTable" class="invalid-feedback m-2 ml-4">
+                                Válaszd ki a tábla méretét!
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Tábla box -->
+    <section id="boardHolder" class="ftco-section d-none">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">AMŐBA - Müller László teszt feladat</h2>
+                </div>
+            </div>
+            <div id="currentPlayerDisplay" class="text-center my-3"></div>
+            <div class="row justify-content-center">
+                <div class="tableHolder">
+                    <!-- Ide jön a render -->
+                    <table class="table table-bordered m-auto">
+                        <tbody id="board-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Új játék gomb (sima refesh :)) -->
+    <div id="newGame" class="d-none">
+        <button type="submit" id="playerSubmitButton" class="form-control btn btn-primary submit px-3"
+            onClick="window.location.reload();">
+            Új áték indítása
+        </button>
+    </div>
+
+
+    <script src="script/script.js"></script>
+</body>
+
+</html>
