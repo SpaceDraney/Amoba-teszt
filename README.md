@@ -1,4 +1,4 @@
-# Müller László Amőba játék tesztfeleadat a HM Elektronikai, Logisztikai és Vagyonkezelő Zrt. részére.
+# Amőba játék tesztfeleadat
 
 ## Leírás
 
