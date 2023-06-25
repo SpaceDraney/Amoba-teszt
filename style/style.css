@@ -48,11 +48,14 @@ body {
 #boardHolder .tableHolder {
     width: auto;
     padding: 2px;
-    border: 1px solid #181623;
+    border: 2px solid #181623;
+    border-radius: 4px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
 }
 #boardHolder .table {
     width: auto;
+    border: 6px solid #fbbe54;
+    background: repeat center top url(../images/table_bg.png);
 }
 #boardHolder .table td {
     box-sizing: content-box;
@@ -62,7 +65,6 @@ body {
     text-align: center;
     vertical-align: middle;
     border: 6px solid #fbbe54;
-    background-color: rgba(255, 255, 255, 0.18);
 }
 @media (max-width: 720px) {
     #boardHolder .table td {
