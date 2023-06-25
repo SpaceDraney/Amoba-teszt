@@ -76,7 +76,6 @@ function clickBoard() {
                         } else {
                             currentPlayer = playerOne;
                         }
-                        console.log("currentPlayer1", currentPlayer);
                         displayCurrentPlayer();
                     }
                 };
@@ -87,7 +86,6 @@ function clickBoard() {
 
 // Tábla kirajzolása
 function createBoard() {
-    console.log("currentPlayer0", currentPlayer);
     for (var i = 0; i < tableSize; i++) {
         board.insertAdjacentHTML("beforeend", "<tr></tr>");
         var row = board.getElementsByTagName("tr")[i];
@@ -101,7 +99,6 @@ function createBoard() {
 
 // Ikonok kirakása
 function tableText(tableCell) {
-    console.log("currentPlayer2", currentPlayer);
     tableCell.innerHTML = currentPlayer.symbol;
 }
 
