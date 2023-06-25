@@ -26,23 +26,28 @@ body {
 #currentPlayerDisplay {
     height: 44px;
 }
-#currentPlayerDisplay strong {
+#currentPlayerDisplay strong,
+#currentPlayerDisplay em,
+#currentPlayerDisplay span {
     font-size: 1.2rem;
     font-weight: 700;
     font-style: normal;
+}
+#currentPlayerDisplay strong {
     color: #419aff;
 }
 #currentPlayerDisplay em {
-    font-size: 1.2rem;
-    font-weight: 700;
-    font-style: normal;
     color: #df3b5d;
+}
+#currentPlayerDisplay span {
+    color: #3aef47;
 }
 #currentPlayerDisplay.winner {
     font-size: 1.4rem;
 }
-#currentPlayerDisplay.winner span {
+#currentPlayerDisplay.winner mark {
     font-weight: 700;
+    border-radius: 10px;
 }
 
 #boardHolder .tableHolder {
@@ -74,7 +79,9 @@ body {
     }
 }
 
-#boardHolder .table td strong {
+#boardHolder .table td strong,
+#boardHolder .table td em,
+#boardHolder .table td span {
     display: block;
     width: 50px;
     height: 50px;
@@ -82,34 +89,37 @@ body {
     text-indent: -60px;
     margin: 0;
     padding: 0;
-    background: no-repeat center top url(../images/icon-X.jpg);
 }
-#boardHolder .table td em {
-    display: block;
-    width: 50px;
-    height: 50px;
-    overflow: hidden;
-    text-indent: -60px;
-    margin: 0;
-    padding: 0;
+#boardHolder .table td strong {
     background: no-repeat center top url(../images/icon-O.jpg);
 }
+#boardHolder .table td em {
+    background: no-repeat center top url(../images/icon-X.jpg);
+}
+#boardHolder .table td span {
+    background: no-repeat center top url(../images/icon-D.jpg);
+}
 @media (max-width: 720px) {
-    #boardHolder .table td strong {
+    #boardHolder .table td strong,
+    #boardHolder .table td em,
+    #boardHolder .table td span {
         width: 28px;
         height: 28px;
-        background: no-repeat center top url(../images/icon-X-small.jpg);
+    }
+    #boardHolder .table td strong {
+        background: no-repeat center top url(../images/icon-O-small.jpg);
     }
     #boardHolder .table td em {
-        width: 28px;
-        height: 28px;
-        background: no-repeat center top url(../images/icon-O-small.jpg);
+        background: no-repeat center top url(../images/icon-X-small.jpg);
+    }
+    #boardHolder .table td span {
+        background: no-repeat center top url(../images/icon-D-small.jpg);
     }
 }
 
 #newGame {
     position: absolute;
-    top: 10%;
+    top: 9%;
     left: 50%;
     transform: translate(-50%, 0);
     font-size: 1.4rem;

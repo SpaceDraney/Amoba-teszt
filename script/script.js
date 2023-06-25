@@ -1,4 +1,9 @@
-var playerOneName, playerTwoName, playerOne, playerTwo;
+var playerOne,
+    playerTwo,
+    playerThree,
+    playerOneName,
+    playerTwoName,
+    playerThreeName;
 var currentPlayer, currentPlayerDisplay;
 var tableSize, smallSize;
 var sizeSelect = document.getElementById("sizeSelect");
@@ -11,22 +16,26 @@ document
     .addEventListener("click", function (event) {
         playerOneName = document.getElementById("namePlayerOne").value;
         playerTwoName = document.getElementById("namePlayerTwo").value;
+        playerThreeName = document.getElementById("namePlayerThree").value;
         tableSize = sizeSelect.item(sizeSelect.selectedIndex).value;
         smallSize = tableSize - 4;
 
-        if (playerOneName === "" || playerTwoName === "") {
+        if (
+            playerOneName === "" ||
+            playerTwoName === "" ||
+            playerThreeName === ""
+        ) {
             document.getElementById("errorMsgUsers").style.display = "block";
-            //alert("Add meg mindkét játékos nevét!");
         } else if (tableSize <= 0) {
             document.getElementById("errorMsgUsers").style.display = "none";
             document.getElementById("errorMsgTable").style.display = "block";
-            //alert("Add meg a tábla méretét!");
         } else {
             document.getElementById("playerNameInput").style.display = "none";
             document.getElementById("boardHolder").classList.remove("d-none");
 
             playerOne = { symbol: "<strong>O</strong>", name: playerOneName };
             playerTwo = { symbol: "<em>X</em>", name: playerTwoName };
+            playerThree = { symbol: "<span>D</span>", name: playerThreeName };
             currentPlayer = playerOne;
             currentPlayerDisplay = document.getElementById(
                 "currentPlayerDisplay"
@@ -62,9 +71,12 @@ function clickBoard() {
                     } else {
                         if (currentPlayer == playerOne) {
                             currentPlayer = playerTwo;
+                        } else if (currentPlayer == playerTwo) {
+                            currentPlayer = playerThree;
                         } else {
                             currentPlayer = playerOne;
                         }
+                        console.log("currentPlayer1", currentPlayer);
                         displayCurrentPlayer();
                     }
                 };
@@ -75,6 +87,7 @@ function clickBoard() {
 
 // Tábla kirajzolása
 function createBoard() {
+    console.log("currentPlayer0", currentPlayer);
     for (var i = 0; i < tableSize; i++) {
         board.insertAdjacentHTML("beforeend", "<tr></tr>");
         var row = board.getElementsByTagName("tr")[i];
@@ -88,6 +101,7 @@ function createBoard() {
 
 // Ikonok kirakása
 function tableText(tableCell) {
+    console.log("currentPlayer2", currentPlayer);
     tableCell.innerHTML = currentPlayer.symbol;
 }
 
@@ -96,9 +110,12 @@ function displayCurrentPlayer() {
     if (currentPlayer == playerOne) {
         currentPlayerDisplay.innerHTML =
             "Most <strong>" + currentPlayer.name + "</strong> következik";
-    } else {
+    } else if (currentPlayer == playerTwo) {
         currentPlayerDisplay.innerHTML =
             "Most <em>" + currentPlayer.name + "</em> következik";
+    } else {
+        currentPlayerDisplay.innerHTML =
+            "Most <span>" + currentPlayer.name + "</span> következik";
     }
 }
 
@@ -189,6 +206,6 @@ function checkGame() {
 function displayWinMessage() {
     currentPlayerDisplay.classList.add("winner");
     currentPlayerDisplay.innerHTML =
-        "Gratulálok, a játékot <span>" + currentPlayer.name + "</span> nyerte!";
+        "Gratulálok, a játékot <mark>" + currentPlayer.name + "</mark> nyerte!";
     document.getElementById("newGame").classList.remove("d-none");
 }
