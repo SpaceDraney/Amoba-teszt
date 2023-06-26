@@ -95,31 +95,22 @@ function clickBoard() {
         for (var i = 0; i < tableSize; i++) {
             for (var j = 0; j < tableSize; j++) {
                 table.rows[i].cells[j].onclick = function () {
-                    // Nem engedi, hogy ugyan oda mégegyszer tegyél
+                    // Nem engedi, hogy ugyan oda mégegyszer tegyél, ha lehet kiteszi az ikont
                     if (this.innerText) {
                         return;
                     }
                     tableText(this);
 
-                    if (checkGame()) {
-                        for (var i = 0; i < tableSize; i++) {
-                            for (var j = 0; j < tableSize; j++) {
-                                table.rows[i].cells[j].onclick = "";
-                            }
-                        }
+                    // Elenörzi nyertél-e, ha nem megy a következő játékosra
+                    checkGame();
+                    if (currentPlayer == playerOne) {
+                        currentPlayer = playerTwo;
+                    } else if (playerThree.name && currentPlayer == playerTwo) {
+                        currentPlayer = playerThree;
                     } else {
-                        if (currentPlayer == playerOne) {
-                            currentPlayer = playerTwo;
-                        } else if (
-                            playerThree.name &&
-                            currentPlayer == playerTwo
-                        ) {
-                            currentPlayer = playerThree;
-                        } else {
-                            currentPlayer = playerOne;
-                        }
-                        displayCurrentPlayer();
+                        currentPlayer = playerOne;
                     }
+                    displayCurrentPlayer();
                 };
             }
         }
