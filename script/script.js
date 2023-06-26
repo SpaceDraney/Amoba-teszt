@@ -3,12 +3,16 @@ var playerOne,
     playerThree,
     playerOneName,
     playerTwoName,
-    playerThreeName;
+    playerThreeName,
+    playerOneIcon,
+    playerTwoIcon,
+    playerThreeIcon;
 var currentPlayer, currentPlayerDisplay;
 var tableSize, smallSize;
 var sizeSelect = document.getElementById("sizeSelect");
 var table = document.getElementsByClassName("table")[0];
 var board = document.getElementById("board-body");
+var playerThreeIcon;
 var viewportWidth = window.innerWidth;
 
 document
@@ -20,6 +24,10 @@ document
         tableSize = sizeSelect.item(sizeSelect.selectedIndex).value;
         smallSize = tableSize - 4;
 
+        playerOneIcon = document.getElementById("playerOneIcon").value;
+        playerTwoIcon = document.getElementById("playerTwoIcon").value;
+        playerThreeIcon = document.getElementById("playerThreeIcon").value;
+
         if (
             playerOneName === "" ||
             playerTwoName === "" ||
@@ -29,22 +37,40 @@ document
         } else if (tableSize <= 0) {
             document.getElementById("errorMsgUsers").style.display = "none";
             document.getElementById("errorMsgTable").style.display = "block";
+        } else if (
+            playerOneIcon === playerTwoIcon ||
+            playerTwoIcon === playerThreeIcon ||
+            playerOneIcon === playerThreeIcon
+        ) {
+            document.getElementById("errorMsgUsers").style.display = "none";
+            document.getElementById("errorMsgTable").style.display = "none";
+            document.getElementById("errorMsgIcon").style.display = "block";
         } else {
             document.getElementById("playerNameInput").style.display = "none";
             document.getElementById("boardHolder").classList.remove("d-none");
 
-            playerOne = { symbol: "<strong>O</strong>", name: playerOneName };
-            playerTwo = { symbol: "<em>X</em>", name: playerTwoName };
-            playerThree = { symbol: "<span>D</span>", name: playerThreeName };
+            playerOne = {
+                name: playerOneName,
+                symbol: '<span class="' + playerOneIcon + '"></span>',
+            };
+            playerTwo = {
+                name: playerTwoName,
+                symbol: '<span class="' + playerTwoIcon + '"></span>',
+            };
+            playerThree = {
+                name: playerThreeName,
+                symbol: '<span class="' + playerThreeIcon + '"></span>',
+            };
             currentPlayer = playerOne;
             currentPlayerDisplay = document.getElementById(
                 "currentPlayerDisplay"
             );
+
             displayCurrentPlayer();
+
+            createBoard();
         }
         event.preventDefault();
-
-        createBoard();
     });
 
 // 620 px alatt nem lehet nagy táblát választani
@@ -86,6 +112,7 @@ function clickBoard() {
 
 // Tábla kirajzolása
 function createBoard() {
+    tableSize = sizeSelect.item(sizeSelect.selectedIndex).value;
     for (var i = 0; i < tableSize; i++) {
         board.insertAdjacentHTML("beforeend", "<tr></tr>");
         var row = board.getElementsByTagName("tr")[i];

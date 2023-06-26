@@ -25,17 +25,47 @@
                     <div class="login-wrap p-0">
                         <h3 class="mb-4 text-center">Játékososk megadása</h3>
                         <form action="#" class="signin-form">
-                            <div class="form-group">
-                                <input type="text" id="namePlayerOne" name="namePlayerOne" class="form-control"
-                                    placeholder="Első játékos neve" />
+                            <div class="form-row">
+                                <div class="form-group col-8">
+                                    <input type="text" id="namePlayerOne" name="namePlayerOne" class="form-control"
+                                        placeholder="Első játékos neve" />
+                                </div>
+                                <div class="form-group col-4">
+                                    <select id="playerOneIcon" class="form-select form-select-lg form-control"
+                                        aria-label=".form-select-lg example">
+                                        <option selected value="o">Kör</option>
+                                        <option value="x">Kereszt</option>
+                                        <option value="d">Négyzet</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" id="namePlayerTwo" name="namePlayerTwo" class="form-control"
-                                    placeholder="Második játékos neve" />
+                            <div class="form-row">
+                                <div class="form-group col-8">
+                                    <input type="text" id="namePlayerTwo" name="namePlayerTwo" class="form-control"
+                                        placeholder="Második játékos neve" />
+                                </div>
+                                <div class="form-group col-4">
+                                    <select id="playerTwoIcon" class="form-select form-select-lg form-control"
+                                        aria-label=".form-select-lg example">
+                                        <option selected value="x">Kereszt</option>
+                                        <option value="d">Négyzet</option>
+                                        <option value="o">Kör</option>
+                                    </select>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="text" id="namePlayerThree" name="namePlayerThree" class="form-control"
-                                    placeholder="Harmadik játékos neve" />
+                            <div class="form-row">
+                                <div class="form-group col-8">
+                                    <input type="text" id="namePlayerThree" name="namePlayerThree" class="form-control"
+                                        placeholder="Harmadik játékos neve" />
+                                </div>
+                                <div class="form-group col-4">
+                                    <select id="playerThreeIcon" class="form-select form-select-lg form-control"
+                                        aria-label=".form-select-lg example">
+                                        <option selected value="d">Négyzet</option>
+                                        <option value="o">Kör</option>
+                                        <option value="x">Kereszt</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <select id="sizeSelect" class="form-select form-select-lg form-control"
@@ -56,6 +86,9 @@
                             </div>
                             <div id="errorMsgTable" class="invalid-feedback m-2 ml-4">
                                 Válaszd ki a tábla méretét!
+                            </div>
+                            <div id="errorMsgIcon" class="invalid-feedback m-2 ml-4">
+                                Az ikonoknak különbözniük kell!
                             </div>
                         </form>
                     </div>

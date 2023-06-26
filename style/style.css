@@ -19,6 +19,10 @@ body {
     background-color: rgba(255, 255, 255, 0.18);
 }
 
+.form-select {
+    padding-right: 0;
+}
+
 .ftco-section .invalid-feedback {
     font-size: 1rem;
 }
@@ -79,8 +83,6 @@ body {
     }
 }
 
-#boardHolder .table td strong,
-#boardHolder .table td em,
 #boardHolder .table td span {
     display: block;
     width: 50px;
@@ -90,29 +92,27 @@ body {
     margin: 0;
     padding: 0;
 }
-#boardHolder .table td strong {
+#boardHolder .table td span.o {
     background: no-repeat center top url(../images/icon-O.jpg);
 }
-#boardHolder .table td em {
+#boardHolder .table td span.x {
     background: no-repeat center top url(../images/icon-X.jpg);
 }
-#boardHolder .table td span {
+#boardHolder .table td span.d {
     background: no-repeat center top url(../images/icon-D.jpg);
 }
 @media (max-width: 720px) {
-    #boardHolder .table td strong,
-    #boardHolder .table td em,
     #boardHolder .table td span {
         width: 28px;
         height: 28px;
     }
-    #boardHolder .table td strong {
+    #boardHolder .table td span.o {
         background: no-repeat center top url(../images/icon-O-small.jpg);
     }
-    #boardHolder .table td em {
+    #boardHolder .table td span.x {
         background: no-repeat center top url(../images/icon-X-small.jpg);
     }
-    #boardHolder .table td span {
+    #boardHolder .table td span.d {
         background: no-repeat center top url(../images/icon-D-small.jpg);
     }
 }
