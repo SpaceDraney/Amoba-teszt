@@ -110,7 +110,10 @@ function clickBoard() {
                     } else {
                         if (currentPlayer == playerOne) {
                             currentPlayer = playerTwo;
-                        } else if (currentPlayer == playerTwo) {
+                        } else if (
+                            playerThree.name &&
+                            currentPlayer == playerTwo
+                        ) {
                             currentPlayer = playerThree;
                         } else {
                             currentPlayer = playerOne;
