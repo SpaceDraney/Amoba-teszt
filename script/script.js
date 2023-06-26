@@ -43,8 +43,8 @@ document
             document.getElementById("errorMsgIcon").style.display = "none";
             document.getElementById("errorMsgTable").style.display = "block";
         } else {
-            document.getElementById("playerNameInput").style.display = "none";
-            document.getElementById("boardHolder").classList.remove("d-none");
+            document.getElementById("playerHolder").style.display = "none";
+            document.getElementById("gameHolder").classList.remove("d-none");
 
             playerOne = {
                 name: playerOneName,
