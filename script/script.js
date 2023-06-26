@@ -11,7 +11,7 @@ var currentPlayer,
 var currentPlayerDisplay = document.getElementById("currentPlayerDisplay");
 var tableSize, smallSize;
 var table = document.getElementById("boardTable");
-var board = document.getElementById("boardBody");
+var board = document.querySelector("#boardTable tbody");
 var viewportWidth = window.innerWidth;
 
 document
@@ -129,10 +129,9 @@ function clickBoard() {
 // Tábla kirajzolása
 function createBoard() {
     for (var i = 0; i < tableSize; i++) {
-        board.insertAdjacentHTML("beforeend", "<tr></tr>");
-        var row = board.getElementsByTagName("tr")[i];
+        var row = board.insertRow();
         for (var j = 0; j < tableSize; j++) {
-            row.insertAdjacentHTML("beforeend", "<td></td>");
+            row.insertCell();
         }
     }
 
