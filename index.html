@@ -27,7 +27,7 @@
                         <form action="#" class="signin-form">
                             <div class="form-row">
                                 <div class="form-group col-8">
-                                    <input type="text" id="namePlayerOne" name="namePlayerOne" class="form-control"
+                                    <input type="text" id="playerOneName" name="playerOneName" class="form-control"
                                         placeholder="Első játékos neve" />
                                     <span class="required-star">*</span>
                                 </div>
@@ -42,7 +42,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-8">
-                                    <input type="text" id="namePlayerTwo" name="namePlayerTwo" class="form-control"
+                                    <input type="text" id="playerTwoName" name="playerTwoName" class="form-control"
                                         placeholder="Második játékos neve" />
                                     <span class="required-star">*</span>
                                 </div>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-8">
-                                    <input type="text" id="namePlayerThree" name="namePlayerThree" class="form-control"
+                                    <input type="text" id="playerThreeName" name="playerThreeName" class="form-control"
                                         placeholder="Harmadik játékos neve" />
                                 </div>
                                 <div class="form-group col-4">
@@ -112,8 +112,8 @@
             <div class="row justify-content-center">
                 <div class="tableHolder">
                     <!-- Ide jön a render -->
-                    <table class="table table-bordered m-auto">
-                        <tbody id="board-body"></tbody>
+                    <table id="boardTable" class="table table-bordered m-auto">
+                        <tbody id="boardBody"></tbody>
                     </table>
                 </div>
             </div>
@@ -123,8 +123,7 @@
 
     <!-- Új játék gomb (sima refesh :)) -->
     <div id="newGame" class="d-none">
-        <button type="submit" id="playerSubmitButton" class="form-control btn btn-primary submit px-3"
-            onClick="window.location.reload();">
+        <button type="submit" class="form-control btn btn-primary submit px-3" onClick="window.location.reload();">
             Új áték indítása
         </button>
     </div>

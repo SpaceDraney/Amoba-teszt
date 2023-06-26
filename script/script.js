@@ -1,4 +1,5 @@
-var playerOne,
+var currentPlayer,
+    playerOne,
     playerTwo,
     playerThree,
     playerOneName,
@@ -7,46 +8,40 @@ var playerOne,
     playerOneIcon,
     playerTwoIcon,
     playerThreeIcon;
-var currentPlayer, currentPlayerDisplay;
+var currentPlayerDisplay = document.getElementById("currentPlayerDisplay");
 var tableSize, smallSize;
-var sizeSelect = document.getElementById("sizeSelect");
-var table = document.getElementsByClassName("table")[0];
-var board = document.getElementById("board-body");
-var playerThreeIcon;
+var table = document.getElementById("boardTable");
+var board = document.getElementById("boardBody");
 var viewportWidth = window.innerWidth;
 
 document
     .getElementById("playerSubmitButton")
     .addEventListener("click", function (event) {
-        playerOneName = document.getElementById("namePlayerOne").value;
-        playerTwoName = document.getElementById("namePlayerTwo").value;
-        playerThreeName = document.getElementById("namePlayerThree").value;
-        tableSize = sizeSelect.item(sizeSelect.selectedIndex).value;
-        smallSize = tableSize - 4;
-
+        playerOneName = document.getElementById("playerOneName").value;
+        playerTwoName = document.getElementById("playerTwoName").value;
+        playerThreeName = document.getElementById("playerThreeName").value;
         playerOneIcon = document.getElementById("playerOneIcon").value;
         playerTwoIcon = document.getElementById("playerTwoIcon").value;
         playerThreeIcon = document.getElementById("playerThreeIcon").value;
 
+        tableSize = document.getElementById("sizeSelect").value;
+        smallSize = tableSize - 4;
+
         if (playerOneName === "" || playerTwoName === "") {
             document.getElementById("errorMsgUsers").style.display = "block";
-        } else if (tableSize <= 0) {
-            document.getElementById("errorMsgUsers").style.display = "none";
-            document.getElementById("errorMsgTable").style.display = "block";
         } else if (
             playerOneIcon === playerTwoIcon ||
-            playerOneIcon === playerTwoIcon
-        ) {
-            document.getElementById("errorMsgUsers").style.display = "none";
-            document.getElementById("errorMsgTable").style.display = "none";
-            document.getElementById("errorMsgIcon").style.display = "block";
-        } else if (
+            playerOneIcon === playerTwoIcon ||
             (playerThreeName && playerThreeIcon == playerOneIcon) ||
             (playerThreeName && playerThreeIcon == playerTwoIcon)
         ) {
             document.getElementById("errorMsgUsers").style.display = "none";
             document.getElementById("errorMsgTable").style.display = "none";
             document.getElementById("errorMsgIcon").style.display = "block";
+        } else if (tableSize <= 0) {
+            document.getElementById("errorMsgUsers").style.display = "none";
+            document.getElementById("errorMsgIcon").style.display = "none";
+            document.getElementById("errorMsgTable").style.display = "block";
         } else {
             document.getElementById("playerNameInput").style.display = "none";
             document.getElementById("boardHolder").classList.remove("d-none");
@@ -54,22 +49,34 @@ document
             playerOne = {
                 name: playerOneName,
                 icon: playerOneIcon,
-                symbol: '<span class="' + playerOneIcon + '"></span>',
+                symbol:
+                    '<span class="' +
+                    playerOneIcon +
+                    '">' +
+                    playerOneIcon +
+                    "</span>",
             };
             playerTwo = {
                 name: playerTwoName,
                 icon: playerTwoIcon,
-                symbol: '<span class="' + playerTwoIcon + '"></span>',
+                symbol:
+                    '<span class="' +
+                    playerTwoIcon +
+                    '">' +
+                    playerTwoIcon +
+                    "</span>",
             };
             playerThree = {
                 name: playerThreeName,
                 icon: playerThreeIcon,
-                symbol: '<span class="' + playerThreeIcon + '"></span>',
+                symbol:
+                    '<span class="' +
+                    playerThreeIcon +
+                    '">' +
+                    playerThreeIcon +
+                    "</span>",
             };
             currentPlayer = playerOne;
-            currentPlayerDisplay = document.getElementById(
-                "currentPlayerDisplay"
-            );
 
             displayCurrentPlayer();
 
@@ -93,6 +100,7 @@ function clickBoard() {
                         return;
                     }
                     tableText(this);
+
                     if (checkGame()) {
                         for (var i = 0; i < tableSize; i++) {
                             for (var j = 0; j < tableSize; j++) {
@@ -102,10 +110,7 @@ function clickBoard() {
                     } else {
                         if (currentPlayer == playerOne) {
                             currentPlayer = playerTwo;
-                        } else if (
-                            playerThree.name &&
-                            currentPlayer == playerTwo
-                        ) {
+                        } else if (currentPlayer == playerTwo) {
                             currentPlayer = playerThree;
                         } else {
                             currentPlayer = playerOne;
