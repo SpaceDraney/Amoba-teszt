@@ -101,16 +101,26 @@ function clickBoard() {
                     }
                     tableText(this);
 
-                    // Elenörzi nyertél-e, ha nem megy a következő játékosra
-                    checkGame();
-                    if (currentPlayer == playerOne) {
-                        currentPlayer = playerTwo;
-                    } else if (playerThree.name && currentPlayer == playerTwo) {
-                        currentPlayer = playerThree;
+                    // Ellenörzi nyertél-e, ha igen nem enged többet tenni, ha nem megy a következő játékosra
+                    if (checkGame()) {
+                        for (var i = 0; i < tableSize; i++) {
+                            for (var j = 0; j < tableSize; j++) {
+                                table.rows[i].cells[j].onclick = "";
+                            }
+                        }
                     } else {
-                        currentPlayer = playerOne;
+                        if (currentPlayer == playerOne) {
+                            currentPlayer = playerTwo;
+                        } else if (
+                            playerThree.name &&
+                            currentPlayer == playerTwo
+                        ) {
+                            currentPlayer = playerThree;
+                        } else {
+                            currentPlayer = playerOne;
+                        }
+                        displayCurrentPlayer();
                     }
-                    displayCurrentPlayer();
                 };
             }
         }
