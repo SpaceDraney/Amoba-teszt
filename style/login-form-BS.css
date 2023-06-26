@@ -10654,7 +10654,7 @@ body:after {
     bottom: 0;
     content: "";
     background: #000;
-    opacity: 0.3;
+    opacity: 0.4;
     z-index: -1;
 }
 
