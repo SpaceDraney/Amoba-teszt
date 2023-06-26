@@ -28,19 +28,21 @@ document
         playerTwoIcon = document.getElementById("playerTwoIcon").value;
         playerThreeIcon = document.getElementById("playerThreeIcon").value;
 
-        if (
-            playerOneName === "" ||
-            playerTwoName === "" ||
-            playerThreeName === ""
-        ) {
+        if (playerOneName === "" || playerTwoName === "") {
             document.getElementById("errorMsgUsers").style.display = "block";
         } else if (tableSize <= 0) {
             document.getElementById("errorMsgUsers").style.display = "none";
             document.getElementById("errorMsgTable").style.display = "block";
         } else if (
             playerOneIcon === playerTwoIcon ||
-            playerTwoIcon === playerThreeIcon ||
-            playerOneIcon === playerThreeIcon
+            playerOneIcon === playerTwoIcon
+        ) {
+            document.getElementById("errorMsgUsers").style.display = "none";
+            document.getElementById("errorMsgTable").style.display = "none";
+            document.getElementById("errorMsgIcon").style.display = "block";
+        } else if (
+            (playerThreeName && playerThreeIcon == playerOneIcon) ||
+            (playerThreeName && playerThreeIcon == playerTwoIcon)
         ) {
             document.getElementById("errorMsgUsers").style.display = "none";
             document.getElementById("errorMsgTable").style.display = "none";
@@ -100,7 +102,10 @@ function clickBoard() {
                     } else {
                         if (currentPlayer == playerOne) {
                             currentPlayer = playerTwo;
-                        } else if (currentPlayer == playerTwo) {
+                        } else if (
+                            playerThree.name &&
+                            currentPlayer == playerTwo
+                        ) {
                             currentPlayer = playerThree;
                         } else {
                             currentPlayer = playerOne;
@@ -163,6 +168,7 @@ function checkGame() {
             }
         }
     }
+
     // Vertikális ellenörzés
     for (var i = 0; i < smallSize; i++) {
         for (var j = 0; j < tableSize; j++) {
@@ -183,6 +189,7 @@ function checkGame() {
             }
         }
     }
+
     // Jobb átlós ellenörzés
     for (var i = 0; i < smallSize; i++) {
         for (var j = 0; j < smallSize; j++) {
@@ -203,6 +210,7 @@ function checkGame() {
             }
         }
     }
+
     // Bal átlós ellenörzés
     for (var i = 4; i < tableSize; i++) {
         for (var j = 0; j < smallSize; j++) {

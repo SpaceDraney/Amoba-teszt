@@ -22,6 +22,12 @@ body {
 .form-select {
     padding-right: 0;
 }
+span.required-star {
+    position: absolute;
+    left: 15px;
+    top: 5px;
+    color: #fbbe54;
+}
 
 .ftco-section .invalid-feedback {
     font-size: 1rem;
