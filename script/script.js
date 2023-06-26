@@ -3,12 +3,16 @@ var playerOne,
     playerThree,
     playerOneName,
     playerTwoName,
-    playerThreeName;
+    playerThreeName,
+    playerOneIcon,
+    playerTwoIcon,
+    playerThreeIcon;
 var currentPlayer, currentPlayerDisplay;
 var tableSize, smallSize;
 var sizeSelect = document.getElementById("sizeSelect");
 var table = document.getElementsByClassName("table")[0];
 var board = document.getElementById("board-body");
+var playerThreeIcon;
 var viewportWidth = window.innerWidth;
 
 document
@@ -20,6 +24,10 @@ document
         tableSize = sizeSelect.item(sizeSelect.selectedIndex).value;
         smallSize = tableSize - 4;
 
+        playerOneIcon = document.getElementById("playerOneIcon").value;
+        playerTwoIcon = document.getElementById("playerTwoIcon").value;
+        playerThreeIcon = document.getElementById("playerThreeIcon").value;
+
         if (
             playerOneName === "" ||
             playerTwoName === "" ||
@@ -29,22 +37,43 @@ document
         } else if (tableSize <= 0) {
             document.getElementById("errorMsgUsers").style.display = "none";
             document.getElementById("errorMsgTable").style.display = "block";
+        } else if (
+            playerOneIcon === playerTwoIcon ||
+            playerTwoIcon === playerThreeIcon ||
+            playerOneIcon === playerThreeIcon
+        ) {
+            document.getElementById("errorMsgUsers").style.display = "none";
+            document.getElementById("errorMsgTable").style.display = "none";
+            document.getElementById("errorMsgIcon").style.display = "block";
         } else {
             document.getElementById("playerNameInput").style.display = "none";
             document.getElementById("boardHolder").classList.remove("d-none");
 
-            playerOne = { symbol: "<strong>O</strong>", name: playerOneName };
-            playerTwo = { symbol: "<em>X</em>", name: playerTwoName };
-            playerThree = { symbol: "<span>D</span>", name: playerThreeName };
+            playerOne = {
+                name: playerOneName,
+                icon: playerOneIcon,
+                symbol: '<span class="' + playerOneIcon + '"></span>',
+            };
+            playerTwo = {
+                name: playerTwoName,
+                icon: playerTwoIcon,
+                symbol: '<span class="' + playerTwoIcon + '"></span>',
+            };
+            playerThree = {
+                name: playerThreeName,
+                icon: playerThreeIcon,
+                symbol: '<span class="' + playerThreeIcon + '"></span>',
+            };
             currentPlayer = playerOne;
             currentPlayerDisplay = document.getElementById(
                 "currentPlayerDisplay"
             );
+
             displayCurrentPlayer();
+
+            createBoard();
         }
         event.preventDefault();
-
-        createBoard();
     });
 
 // 620 px alatt nem lehet nagy táblát választani
@@ -76,7 +105,6 @@ function clickBoard() {
                         } else {
                             currentPlayer = playerOne;
                         }
-                        console.log("currentPlayer1", currentPlayer);
                         displayCurrentPlayer();
                     }
                 };
@@ -87,7 +115,7 @@ function clickBoard() {
 
 // Tábla kirajzolása
 function createBoard() {
-    console.log("currentPlayer0", currentPlayer);
+    tableSize = sizeSelect.item(sizeSelect.selectedIndex).value;
     for (var i = 0; i < tableSize; i++) {
         board.insertAdjacentHTML("beforeend", "<tr></tr>");
         var row = board.getElementsByTagName("tr")[i];
@@ -101,22 +129,17 @@ function createBoard() {
 
 // Ikonok kirakása
 function tableText(tableCell) {
-    console.log("currentPlayer2", currentPlayer);
     tableCell.innerHTML = currentPlayer.symbol;
 }
 
 // Aktuális játékos kiírása
 function displayCurrentPlayer() {
-    if (currentPlayer == playerOne) {
-        currentPlayerDisplay.innerHTML =
-            "Most <strong>" + currentPlayer.name + "</strong> következik";
-    } else if (currentPlayer == playerTwo) {
-        currentPlayerDisplay.innerHTML =
-            "Most <em>" + currentPlayer.name + "</em> következik";
-    } else {
-        currentPlayerDisplay.innerHTML =
-            "Most <span>" + currentPlayer.name + "</span> következik";
-    }
+    currentPlayerDisplay.innerHTML =
+        'Most <span class="' +
+        currentPlayer.icon +
+        '">' +
+        currentPlayer.name +
+        "</span> következik";
 }
 
 function checkGame() {
