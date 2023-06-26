@@ -51,14 +51,17 @@ document
 
             playerOne = {
                 name: playerOneName,
+                icon: playerOneIcon,
                 symbol: '<span class="' + playerOneIcon + '"></span>',
             };
             playerTwo = {
                 name: playerTwoName,
+                icon: playerTwoIcon,
                 symbol: '<span class="' + playerTwoIcon + '"></span>',
             };
             playerThree = {
                 name: playerThreeName,
+                icon: playerThreeIcon,
                 symbol: '<span class="' + playerThreeIcon + '"></span>',
             };
             currentPlayer = playerOne;
@@ -131,16 +134,12 @@ function tableText(tableCell) {
 
 // Aktuális játékos kiírása
 function displayCurrentPlayer() {
-    if (currentPlayer == playerOne) {
-        currentPlayerDisplay.innerHTML =
-            "Most <strong>" + currentPlayer.name + "</strong> következik";
-    } else if (currentPlayer == playerTwo) {
-        currentPlayerDisplay.innerHTML =
-            "Most <em>" + currentPlayer.name + "</em> következik";
-    } else {
-        currentPlayerDisplay.innerHTML =
-            "Most <span>" + currentPlayer.name + "</span> következik";
-    }
+    currentPlayerDisplay.innerHTML =
+        'Most <span class="' +
+        currentPlayer.icon +
+        '">' +
+        currentPlayer.name +
+        "</span> következik";
 }
 
 function checkGame() {

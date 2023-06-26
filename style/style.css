@@ -30,20 +30,18 @@ body {
 #currentPlayerDisplay {
     height: 44px;
 }
-#currentPlayerDisplay strong,
-#currentPlayerDisplay em,
 #currentPlayerDisplay span {
     font-size: 1.2rem;
     font-weight: 700;
     font-style: normal;
 }
-#currentPlayerDisplay strong {
+#currentPlayerDisplay span.o {
     color: #419aff;
 }
-#currentPlayerDisplay em {
+#currentPlayerDisplay span.x {
     color: #df3b5d;
 }
-#currentPlayerDisplay span {
+#currentPlayerDisplay span.d {
     color: #3aef47;
 }
 #currentPlayerDisplay.winner {
