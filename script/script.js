@@ -128,7 +128,6 @@ function clickBoard() {
 
 // Tábla kirajzolása
 function createBoard() {
-    tableSize = sizeSelect.item(sizeSelect.selectedIndex).value;
     for (var i = 0; i < tableSize; i++) {
         board.insertAdjacentHTML("beforeend", "<tr></tr>");
         var row = board.getElementsByTagName("tr")[i];
