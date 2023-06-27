@@ -1,4 +1,4 @@
-# Amőba játék tesztfeleadat
+# Amőba játék
 
 ## Leírás
 
